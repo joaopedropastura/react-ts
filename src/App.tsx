@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Calculadora from './components/calculadora';
+import Counter from './components/counterAuto';
+import Alert from './components/alert'
+import TodoList from './components/todoList';
+import { Route, Router, RouterProvider, Routes, createBrowserRouter } from 'react-router-dom';
+import NavBar from './components/NavBar';
+import HomePage from './pages/HomePage';
+
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      {/* <Calculadora/>
+      <Counter.Counter/>
+      <Counter.Counter2 setShow={setShow}/>
+      <Alert show={show} setShow={setShow}/> */}
+
+      <NavBar />
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+        {/* <Route path='/sobre' element={<AboutPage />} />
+        <Route path='*' element={<NotFoundPage />} /> */}
+        <Route path='list' element={ <TodoList />} />
+      </Routes>
+     
+    </>
+  )
 }
 
 export default App;
