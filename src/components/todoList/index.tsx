@@ -1,26 +1,30 @@
-import { todoList } from '../../model/todoList'
-import React, { useEffect, useReducer, useRef, useState } from "react";
+import React, {useState } from "react";
+import './style.sass'
+import itemTodoList from "../itemTodoList";
+
 
 const List = () => {
-
+    
     const [list, setList] = useState<string[]>([])
     const [value, setValue] = useState('')
-    const inputRef = useRef(null);
 
     const handleClick = () => {
-        if (inputRef.current === null)
-            return
-        const temp: string = inputRef.current['value']
-        setList(prev => [...prev, temp])
-        console.log(list)
+        setList(prev => [...prev, value])
+        
         setValue('');
+    }
+    const handleKeyDown = (event: React.KeyboardEvent) => {
+        if (event.key === 'Enter')
+            handleClick()
     }
 
     return (
         <>
-            {list}
-            <input type="text" ref={inputRef}  onChange={e => setValue(e.target.value)}/>
+            <input type="text" value={value} onKeyDown={handleKeyDown} onChange={e => setValue(e.target.value)}/>
             <button onClick={handleClick}>add</button>
+            <div id="list">
+                {list.map( x => itemTodoList(x))}
+            </div>
         </>
     )
 }

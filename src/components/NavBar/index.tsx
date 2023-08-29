@@ -1,7 +1,6 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 import  { NavLink }  from './styled'
 const NavBar = () => {
@@ -13,7 +12,7 @@ const NavBar = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <NavLink to="/">Home</NavLink>
-                        <Link to="/sobre">About</Link>
+                        <Link to="/list">Todo List</Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
